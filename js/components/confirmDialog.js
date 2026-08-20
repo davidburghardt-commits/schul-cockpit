@@ -8,7 +8,7 @@ export function confirmDialog({
   danger = true,
 }) {
   return new Promise((resolve) => {
-    const backdrop = h('div.panel-backdrop', { style: 'z-index:95' });
+    const backdrop = h('div.panel-backdrop', { style: 'z-index:89' });
 
     function close(result) {
       document.removeEventListener('keydown', onKeydown);
