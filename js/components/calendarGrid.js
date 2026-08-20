@@ -54,8 +54,13 @@ export function renderMonthGrid(year, month, { tasks, exams, settings, subjects,
       if (cell.iso === todayISO) classes.push('today');
       if (holiday) classes.push('holiday');
 
-      const items = [...dueExams.map((e) => chip(e, subjects, 'exam')), ...dueTasks.map((t) => chip(t, subjects, 'task'))].slice(0, 3);
-      const overflow = dueTasks.length + dueExams.length - items.length;
+      const all = [...dueExams.map((e) => ({ entry: e, kind: 'exam' })), ...dueTasks.map((t) => ({ entry: t, kind: 'task' }))];
+      const items = all.slice(0, 3).map(({ entry, kind }) => chip(entry, subjects, kind));
+      const overflow = all.length - items.length;
+      const dots = all.slice(0, 6).map(({ entry, kind }) => {
+        const subject = findSubject(subjects, entry.subjectId);
+        return h('span.calendar-dot', { style: `background:${subjectColorVar(subject)}` });
+      });
 
       return h(
         `div.${classes.join('.')}`,
@@ -64,6 +69,7 @@ export function renderMonthGrid(year, month, { tasks, exams, settings, subjects,
           h('span.cell-date', {}, String(cell.dayNum)),
           ...items,
           overflow > 0 ? h('span.text-xs.text-secondary', {}, `+${overflow} mehr`) : null,
+          dots.length ? h('div.calendar-dots', {}, dots) : null,
         ]
       );
     }),

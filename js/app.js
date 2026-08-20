@@ -12,7 +12,9 @@ import { renderFaecher } from './views/faecher.js';
 import { renderFachDetail } from './views/fachDetail.js';
 import { renderKlausuren } from './views/klausuren.js';
 import { renderKalender } from './views/kalender.js';
+import { renderStatistiken } from './views/statistiken.js';
 import { renderEinstellungen } from './views/einstellungen.js';
+import { initGlobalSearchShortcut, openSearch } from './components/searchOverlay.js';
 
 function applyTheme(theme) {
   const root = document.documentElement;
@@ -51,6 +53,7 @@ function registerRoutes() {
   registerRoute('/klausuren/:id', renderKlausuren);
   registerRoute('/kalender', renderKalender);
   registerRoute('/kalender/:date', renderKalender);
+  registerRoute('/statistiken', renderStatistiken);
   registerRoute('/einstellungen', renderEinstellungen);
   setNotFound(renderNotFound);
 }
@@ -66,6 +69,9 @@ function init() {
     document.getElementById('sidebar-backdrop'),
     document.getElementById('menu-toggle')
   );
+
+  initGlobalSearchShortcut();
+  document.getElementById('search-toggle').addEventListener('click', openSearch);
 
   subscribe((state) => {
     applyTheme(state.settings.theme);

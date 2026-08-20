@@ -2,6 +2,7 @@ import { h, clearNode } from '../utils/dom.js';
 import { icon } from '../utils/icons.js';
 import { NAV_ITEMS } from '../utils/constants.js';
 import { getCurrentPath } from '../router.js';
+import { openSearch } from './searchOverlay.js';
 
 export function mountSidebar(sidebarEl, backdropEl, menuButtonEl) {
   function closeMobile() {
@@ -21,6 +22,13 @@ export function mountSidebar(sidebarEl, backdropEl, menuButtonEl) {
 
     sidebarEl.appendChild(
       h('div.sidebar-brand', {}, [h('span.brand-dot'), 'Schul-Cockpit'])
+    );
+
+    sidebarEl.appendChild(
+      h('button.nav-link', { type: 'button', style: 'width:100%;justify-content:space-between;margin-bottom:10px', onclick: openSearch }, [
+        h('span.hstack', {}, [h('span', { html: icon('search', 18) }), 'Suche']),
+        h('span.kbd', {}, '⌘K'),
+      ])
     );
 
     sidebarEl.appendChild(
