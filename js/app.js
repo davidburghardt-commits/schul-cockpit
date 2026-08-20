@@ -6,6 +6,7 @@ import { emptyState } from './components/emptyState.js';
 import { h, clearNode } from './utils/dom.js';
 
 import { renderDashboard } from './views/dashboard.js';
+import { renderHeute } from './views/heute.js';
 import { renderAufgaben } from './views/aufgaben.js';
 import { renderFaecher } from './views/faecher.js';
 import { renderFachDetail } from './views/fachDetail.js';
@@ -39,6 +40,7 @@ function renderNotFound(container) {
 
 function registerRoutes() {
   registerRoute('/dashboard', renderDashboard);
+  registerRoute('/heute', renderHeute);
   registerRoute('/aufgaben', renderAufgaben);
   registerRoute('/aufgaben/:id', renderAufgaben);
   registerRoute('/faecher', renderFaecher);

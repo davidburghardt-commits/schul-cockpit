@@ -119,4 +119,18 @@ export function monthLabel(year, month) {
   return `${MONTHS_LONG_DE[month]} ${year}`;
 }
 
+// Monday of the ISO week containing `iso` (Mon–Sun weeks, matching settings.workdays).
+export function startOfWeekISO(iso) {
+  const date = parseISODate(iso);
+  if (!date) return iso;
+  const day = date.getDay();
+  const diffToMonday = day === 0 ? -6 : 1 - day;
+  date.setDate(date.getDate() + diffToMonday);
+  return toISODate(date);
+}
+
+export function isSameWeek(aISO, bISO) {
+  return startOfWeekISO(aISO) === startOfWeekISO(bISO);
+}
+
 export { MONTHS_LONG_DE, WEEKDAYS_LONG_DE, WEEKDAYS_SHORT_DE };
