@@ -111,6 +111,16 @@ export function renderEinstellungen(container) {
     reader.readAsText(file);
   }
 
+  async function clearTasks() {
+    const ok = await confirmDialog({
+      title: 'Alle Aufgaben löschen?',
+      message: 'Alle Aufgaben und protokollierten Arbeitsblöcke werden gelöscht. Fächer, Klausuren und Einstellungen bleiben erhalten.',
+    });
+    if (!ok) return;
+    dispatch({ type: 'task/clearAll' });
+    showToast('Alle Aufgaben wurden gelöscht.');
+  }
+
   async function reseed() {
     const ok = await confirmDialog({ title: 'Beispieldaten laden?', message: 'Alle aktuellen Daten werden durch die Beispieldaten ersetzt.', confirmLabel: 'Ersetzen' });
     if (!ok) return;
@@ -167,6 +177,7 @@ export function renderEinstellungen(container) {
           h('input', { type: 'file', accept: 'application/json', style: 'display:none', onchange: (e) => e.target.files[0] && importData(e.target.files[0]) }),
         ]),
         h('button.btn.btn-secondary', { onclick: reseed }, 'Beispieldaten laden'),
+        h('button.btn.btn-secondary', { onclick: clearTasks }, 'Alle Aufgaben löschen'),
         h('button.btn.btn-danger', { onclick: clearAll }, 'Alle Daten löschen'),
       ]),
     ]),

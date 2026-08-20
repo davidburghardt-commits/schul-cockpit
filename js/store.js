@@ -80,6 +80,8 @@ function reducer(current, action) {
         workSessions: current.workSessions.filter((w) => w.taskId !== id),
       };
     }
+    case 'task/clearAll':
+      return { ...current, tasks: [], workSessions: [] };
 
     case 'exam/add':
       return { ...current, exams: [...current.exams, action.payload] };
