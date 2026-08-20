@@ -10,6 +10,8 @@ import { renderHeute } from './views/heute.js';
 import { renderAufgaben } from './views/aufgaben.js';
 import { renderFaecher } from './views/faecher.js';
 import { renderFachDetail } from './views/fachDetail.js';
+import { renderKlausuren } from './views/klausuren.js';
+import { renderKalender } from './views/kalender.js';
 import { renderEinstellungen } from './views/einstellungen.js';
 
 function applyTheme(theme) {
@@ -45,6 +47,10 @@ function registerRoutes() {
   registerRoute('/aufgaben/:id', renderAufgaben);
   registerRoute('/faecher', renderFaecher);
   registerRoute('/faecher/:id', renderFachDetail);
+  registerRoute('/klausuren', renderKlausuren);
+  registerRoute('/klausuren/:id', renderKlausuren);
+  registerRoute('/kalender', renderKalender);
+  registerRoute('/kalender/:date', renderKalender);
   registerRoute('/einstellungen', renderEinstellungen);
   setNotFound(renderNotFound);
 }

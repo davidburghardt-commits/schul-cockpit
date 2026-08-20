@@ -5,6 +5,7 @@ import { explainToday, toTimeBlocks, computeWarnings } from '../planner/planner.
 import { warningBanners } from '../components/warningBanner.js';
 import { emptyState } from '../components/emptyState.js';
 import { openTaskEditor } from '../components/taskEditor.js';
+import { openFocusMode } from '../components/fokus.js';
 import { findSubject, subjectColorVar } from '../utils/subjectHelpers.js';
 import { formatLongDate, todayISO } from '../utils/dateUtils.js';
 import { formatMinutes } from '../utils/format.js';
@@ -57,10 +58,14 @@ export function renderHeute(container) {
                 block.overdue ? h('span.badge.badge-danger', {}, 'Überfällig') : null,
               ]),
               h('span.text-sm', {}, item && item.task ? item.task.title : ''),
-              h('button.btn.btn-secondary.btn-sm', {
-                style: 'align-self:flex-start;margin-top:4px',
-                onclick: () => navigate(`/aufgaben/${block.taskId}`),
-              }, 'Aufgabe öffnen'),
+              h('div.hstack', { style: 'margin-top:4px' }, [
+                h('button.btn.btn-primary.btn-sm', {
+                  onclick: () => openFocusMode({ taskId: block.taskId, minutes: block.minutes }),
+                }, [h('span', { html: icon('play', 14) }), 'Jetzt arbeiten']),
+                h('button.btn.btn-secondary.btn-sm', {
+                  onclick: () => navigate(`/aufgaben/${block.taskId}`),
+                }, 'Aufgabe öffnen'),
+              ]),
             ]),
           ]);
         })
