@@ -89,6 +89,8 @@ function reducer(current, action) {
       return { ...current, exams: upsert(current.exams, action.payload) };
     case 'exam/delete':
       return { ...current, exams: remove(current.exams, action.payload) };
+    case 'exam/clearAll':
+      return { ...current, exams: [] };
 
     case 'workSession/add':
       return { ...current, workSessions: [...current.workSessions, action.payload] };

@@ -121,6 +121,16 @@ export function renderEinstellungen(container) {
     showToast('Alle Aufgaben wurden gelöscht.');
   }
 
+  async function clearExams() {
+    const ok = await confirmDialog({
+      title: 'Alle Klausuren löschen?',
+      message: 'Alle Klausuren, Tests und Termine werden gelöscht. Fächer, Aufgaben und Einstellungen bleiben erhalten.',
+    });
+    if (!ok) return;
+    dispatch({ type: 'exam/clearAll' });
+    showToast('Alle Klausuren wurden gelöscht.');
+  }
+
   async function reseed() {
     const ok = await confirmDialog({ title: 'Beispieldaten laden?', message: 'Alle aktuellen Daten werden durch die Beispieldaten ersetzt.', confirmLabel: 'Ersetzen' });
     if (!ok) return;
@@ -178,6 +188,7 @@ export function renderEinstellungen(container) {
         ]),
         h('button.btn.btn-secondary', { onclick: reseed }, 'Beispieldaten laden'),
         h('button.btn.btn-secondary', { onclick: clearTasks }, 'Alle Aufgaben löschen'),
+        h('button.btn.btn-secondary', { onclick: clearExams }, 'Alle Klausuren löschen'),
         h('button.btn.btn-danger', { onclick: clearAll }, 'Alle Daten löschen'),
       ]),
     ]),
