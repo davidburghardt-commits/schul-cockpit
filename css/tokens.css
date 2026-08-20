@@ -1,0 +1,156 @@
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 28px;
+  --space-7: 40px;
+  --space-8: 56px;
+
+  --radius-sm: 7px;
+  --radius-md: 11px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --sidebar-width: 244px;
+  --topbar-height: 56px;
+
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+
+  /* ---- Light palette (default) ---- */
+  --color-bg: #f6f6f8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f2f5;
+  --color-surface-raised: #ffffff;
+  --color-border: #e4e5ea;
+  --color-border-strong: #d3d5dc;
+
+  --color-text: #1b1d22;
+  --color-text-secondary: #5c5f6a;
+  --color-text-tertiary: #8b8e98;
+  --color-text-on-accent: #ffffff;
+
+  --color-accent: #4a5fe6;
+  --color-accent-hover: #3d51d6;
+  --color-accent-soft: #eceffd;
+  --color-accent-soft-text: #3d51d6;
+
+  --color-success: #1a9c5c;
+  --color-success-soft: #e6f7ee;
+  --color-warning: #b2690a;
+  --color-warning-soft: #fdf1de;
+  --color-danger: #d13c3c;
+  --color-danger-soft: #fbeaea;
+
+  --shadow-sm: 0 1px 2px rgba(20, 20, 30, 0.05);
+  --shadow-md: 0 6px 20px rgba(20, 20, 30, 0.07);
+  --shadow-lg: 0 16px 40px rgba(20, 20, 30, 0.12);
+
+  --subject-blue: #4a5fe6;
+  --subject-purple: #8747d9;
+  --subject-green: #1a9c5c;
+  --subject-orange: #c66a12;
+  --subject-red: #d13c3c;
+  --subject-teal: #0f9a95;
+  --subject-pink: #d1428c;
+  --subject-amber: #b8860b;
+  --subject-indigo: #5b4fd6;
+  --subject-slate: #5b6472;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #101114;
+    --color-surface: #191a1f;
+    --color-surface-alt: #202127;
+    --color-surface-raised: #212228;
+    --color-border: #2b2c33;
+    --color-border-strong: #383a42;
+
+    --color-text: #eef0f3;
+    --color-text-secondary: #a3a6b0;
+    --color-text-tertiary: #797c86;
+    --color-text-on-accent: #ffffff;
+
+    --color-accent: #7d8bf0;
+    --color-accent-hover: #909ef7;
+    --color-accent-soft: #232752;
+    --color-accent-soft-text: #b3bcfb;
+
+    --color-success: #46c988;
+    --color-success-soft: #163326;
+    --color-warning: #e0a53f;
+    --color-warning-soft: #3a2c14;
+    --color-danger: #ef6a6a;
+    --color-danger-soft: #3a1f20;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+    --subject-blue: #8b98f5;
+    --subject-purple: #b394ec;
+    --subject-green: #46c988;
+    --subject-orange: #e0a247;
+    --subject-red: #ef6a6a;
+    --subject-teal: #4fd0ca;
+    --subject-pink: #ec7cb6;
+    --subject-amber: #e0c257;
+    --subject-indigo: #9b90ec;
+    --subject-slate: #9aa1ac;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #101114;
+  --color-surface: #191a1f;
+  --color-surface-alt: #202127;
+  --color-surface-raised: #212228;
+  --color-border: #2b2c33;
+  --color-border-strong: #383a42;
+
+  --color-text: #eef0f3;
+  --color-text-secondary: #a3a6b0;
+  --color-text-tertiary: #797c86;
+  --color-text-on-accent: #ffffff;
+
+  --color-accent: #7d8bf0;
+  --color-accent-hover: #909ef7;
+  --color-accent-soft: #232752;
+  --color-accent-soft-text: #b3bcfb;
+
+  --color-success: #46c988;
+  --color-success-soft: #163326;
+  --color-warning: #e0a53f;
+  --color-warning-soft: #3a2c14;
+  --color-danger: #ef6a6a;
+  --color-danger-soft: #3a1f20;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+  --subject-blue: #8b98f5;
+  --subject-purple: #b394ec;
+  --subject-green: #46c988;
+  --subject-orange: #e0a247;
+  --subject-red: #ef6a6a;
+  --subject-teal: #4fd0ca;
+  --subject-pink: #ec7cb6;
+  --subject-amber: #e0c257;
+  --subject-indigo: #9b90ec;
+  --subject-slate: #9aa1ac;
+}
